@@ -4,19 +4,15 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 
 class UserRegisterSerializer(serializers.ModelSerializer):
-    is_shopkeeper = serializers.BooleanField(write_only=True, default=False)
-
     class Meta:
         model = User
         fields = ['username', 'password']
 
     def create(self, validated_data):
-        # is_shopkeeper = validated_data.pop('is_shopkeeper', False)
         user = User.objects.create_user(
             username=validated_data['username'],
             password=validated_data['password'],
         )
-        # Profile.objects.create(user=user, is_shopkeeper=is_shopkeeper)
         return user
 
 class UserTokenSerializer(serializers.Serializer):

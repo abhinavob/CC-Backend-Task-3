@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'login',
     'inventory',
     'shop',
+    'orders',
     'django_filters',
     'rest_framework',
     'rest_framework_simplejwt',
